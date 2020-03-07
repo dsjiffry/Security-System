@@ -1,6 +1,7 @@
 package front_door;
 
 import authentication_service.AuthenticationService;
+import reporting_service.ReportingService;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,16 +15,22 @@ public class Activator implements BundleActivator
 {
     // Bundle's context.
     private BundleContext m_context = null;
-    // The service tacker object.
-	private ServiceTracker m_tracker = null;
+
+    // Create a service tracker to monitor Authentication services.
+	private ServiceTracker auth_tracker = null;
+	// Create a service tracker to monitor Reporting services.
+	private ServiceTracker report_tracker = null;
 
 	public void start(BundleContext context) throws Exception
     {
         m_context = context;
 
-        // Create a service tracker to monitor Authentication services.
-        m_tracker = new ServiceTracker<>(m_context,AuthenticationService.class.getName(),null);
-        m_tracker.open();
+        // Create a service tracker objects
+        auth_tracker = new ServiceTracker<>(m_context,AuthenticationService.class.getName(),null);
+        report_tracker = new ServiceTracker<>(m_context,ReportingService.class.getName(),null);
+        
+        auth_tracker.open();
+        
 
         try
         {
@@ -37,7 +44,7 @@ public class Activator implements BundleActivator
                 System.out.print("Enter ID: ");
                 userID = in.readLine();
 
-                AuthenticationService authenticate = (AuthenticationService) m_context.getService(m_tracker.getServiceReference());
+                AuthenticationService authenticate = (AuthenticationService) m_context.getService(auth_tracker.getServiceReference());
 
                 // If the user entered a blank line, then
                 // exit the loop.
@@ -57,6 +64,16 @@ public class Activator implements BundleActivator
                 else if (authenticate.checkUserID(userID))
                 {
                     System.out.println("ID Recognized, Opening door.");
+                    report_tracker.open();
+                    ReportingService report = (ReportingService) m_context.getService(report_tracker.getServiceReference());
+                    
+                    //If this returns false we have a Security Issue
+                    if(!report.LogUserID(userID))
+                    {
+                    	//TODO: Send Security Alert
+                    }
+                    
+                    
                 }
                 else
                 {
