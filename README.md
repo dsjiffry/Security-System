@@ -15,19 +15,19 @@ An Access Control System which uses the Apache Felix Framework
   ## Authentication Service
   ### Exported Packages:
   * authentication_service
-  ### Imported Package:
+  ### Imported Packages:
   * org.osgi.framework
   * org.osgi.util.tracker
        
   ## Reporting Service
   ### Exported Packages:
   * reporting_service
-  ### Imported Package:
+  ### Imported Packages:
   * org.osgi.framework
   * org.osgi.util.tracker
         
   ## Front Door
-  ### Imported Package:
+  ### Imported Packages:
   * org.osgi.framework
   * org.osgi.util.tracker
   * authentication_service
