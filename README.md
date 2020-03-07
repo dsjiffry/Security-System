@@ -12,7 +12,7 @@ An Access Control System which uses the Apache Felix Framework
 
 
 # Manifest Details
-  ## Autherntication Service
+  ## Authentication Service
   ### Exported Packages:
   * authentication_service
   ### Imported Package:
