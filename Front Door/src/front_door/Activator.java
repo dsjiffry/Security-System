@@ -70,7 +70,7 @@ public class Activator implements BundleActivator
                     ReportingService report = (ReportingService) m_context.getService(report_tracker.getServiceReference());
                     
                     //If this returns false we have a Security Issue
-                    if(!report.LogUserID(userID))
+                    if(!report.logUserID(userID))
                     {
                     	//TODO: Send Security Alert
                     }
@@ -82,7 +82,7 @@ public class Activator implements BundleActivator
                     System.out.println("Unrecognized ID.");
                 }
             }
-        } catch (Exception ex) { }
+        } catch (Exception ignored) { }
     }
 
     public void stop(BundleContext context)

@@ -11,16 +11,19 @@ public class ReportingServiceImpl implements ReportingService
 	private HashMap<String, String> peopleInsideTheBuilding = new HashMap<>();
 	
 	//Keeping a log of people who left the Building
-	private HashMap<String, String> BuildingVisitHistory = new HashMap<>();
+	private HashMap<String, String> buildingVisitHistory = new HashMap<>();
+	
+	//Keeping a log of people who accessed the Elevator
+	private HashMap<String, String> elevatorAccessHistory = new HashMap<>();
 
 	
 	/**
-	 * Will Log the user and the dateTime when they entered
+	 * Will Log the user and the dateTime when called
 	 * @param userID ID of the user
 	 * @return If logging was successful then true
 	 */
 	@Override
-	public boolean LogUserID(String userID) 
+	public boolean logUserID(String userID) 
 	{
 		if(peopleInsideTheBuilding.containsKey(userID))
 		{
@@ -46,7 +49,7 @@ public class ReportingServiceImpl implements ReportingService
 	 * @return If successfully removed then true
 	 */
 	@Override
-	public boolean RemoveUserID(String userID) {
+	public boolean removeUserID(String userID) {
 		if(!peopleInsideTheBuilding.containsKey(userID))
 		{
 			//How is the user exiting the building without entering first?
@@ -61,9 +64,28 @@ public class ReportingServiceImpl implements ReportingService
 		peopleInsideTheBuilding.remove(userID);
 		
 		//Using dateTime as key since we need to keep a track of all the times a user leaves the building.
-		BuildingVisitHistory.put(currentDateTime, userID);
+		buildingVisitHistory.put(currentDateTime, userID);
 		System.out.println("User: "+userID+" Left the Building at: "+currentDateTime);
 		return true;
+	}
+	
+	
+	/**
+	 * Will Log the user and the dateTime when called
+	 * @param userID ID of the user
+	 * @return If logging was successful then true
+	 */
+	@Override
+	public void logElevatorAccess(String userID) 
+	{	
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();
+		String currentDateTime = dtf.format(now);
+		
+		//Storing the userID and the current DateTime
+		elevatorAccessHistory.put(userID, currentDateTime);
+		System.out.println("User: "+userID+" Accessed Elevator at: "+currentDateTime);
 	}
 	
 	

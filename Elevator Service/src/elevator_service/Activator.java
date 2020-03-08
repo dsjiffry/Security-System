@@ -75,6 +75,10 @@ public class Activator implements BundleActivator
 	                		System.out.print(" "+floor+",");
 	                	}
 	                	System.out.println(" for user: "+userID);
+	                	
+	                	report_tracker.open();
+	                    ReportingService report = (ReportingService) m_context.getService(report_tracker.getServiceReference());
+	                    report.logElevatorAccess(userID);
                 	}
                 }
                 else
