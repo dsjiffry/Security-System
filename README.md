@@ -12,30 +12,30 @@ An Access Control System which uses the Apache Felix Framework
 
 
 # Manifest Details
-  ### 1. Authentication Service
-   #### Exported Packages:
-   * authentication_service
-   #### Imported Packages:
-   * org.osgi.framework
-   * org.osgi.util.tracker
+ ## 1. Authentication Service
+  #### Exported Packages:
+  * authentication_service
+  #### Imported Packages:
+  * org.osgi.framework
+  * org.osgi.util.tracker
        
-  ### 2. Reporting Service
-   #### Exported Packages:
-   * reporting_service
-   #### Imported Packages:
-   * org.osgi.framework
-   * org.osgi.util.tracker
+ ## 2. Reporting Service
+  #### Exported Packages:
+  * reporting_service
+  #### Imported Packages:
+  * org.osgi.framework
+  * org.osgi.util.tracker
         
-  ### 3. Front Door
-   #### Imported Packages:
-   * org.osgi.framework
-   * org.osgi.util.tracker
-   * authentication_service
-   * reporting_service 
+ ## 3. Front Door
+  #### Imported Packages:
+  * org.osgi.framework
+  * org.osgi.util.tracker
+  * authentication_service
+  * reporting_service 
   
-  ### 4. Elevator Service
-   #### Imported Packages:
-   * org.osgi.framework
-   * org.osgi.util.tracker
-   * authentication_service
-   * reporting_service 
+ ## 4. Elevator Service
+  #### Imported Packages:
+  * org.osgi.framework
+  * org.osgi.util.tracker
+  * authentication_service
+  * reporting_service 
