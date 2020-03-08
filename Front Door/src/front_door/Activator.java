@@ -52,10 +52,6 @@ public class Activator implements BundleActivator
                 {
                     break;
                 }
-                else if(userID.equals("STOP"))
-                {
-                	return;
-                }
                 else if (authenticate == null)
                 {
                     System.out.println("Authentication Service not found.");

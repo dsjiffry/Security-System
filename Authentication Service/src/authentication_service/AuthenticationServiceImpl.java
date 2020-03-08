@@ -6,9 +6,8 @@ import java.util.List;
 
 public class AuthenticationServiceImpl implements AuthenticationService
 {
-	
-	String[] validIDs = {"USR001", "USR002", "USR003"};
-	HashMap<String, List<Integer>> usersAndAccessableFloors = new HashMap<String, List<Integer>>()
+	@SuppressWarnings("serial")
+	HashMap<String, List<Integer>> usersAndAccessableFloors = new HashMap< String, List<Integer> >()
 	{{
 		put("USR001", Arrays.asList(1, 2, 3));
 		put("USR002", Arrays.asList(1, 2, 3, 4, 5));
@@ -25,12 +24,9 @@ public class AuthenticationServiceImpl implements AuthenticationService
 	public boolean checkUserID(String userID) 
 	{
 		
-		for(String ValidID : validIDs)
+		if(usersAndAccessableFloors.containsKey(userID))
 		{
-			if(ValidID.equals(userID))
-			{
-				return true;
-			}
+			return true;
 		}
 		return false;		
 	}
@@ -42,17 +38,9 @@ public class AuthenticationServiceImpl implements AuthenticationService
 	 * @return An array of accessible floor numbers
 	 */
 	@Override
-	public int[] getAccessableFloors(String userID) 
+	public List<Integer> getAccessableFloors(String userID) 
 	{
-		if(usersAndAccessableFloors.containsKey(userID))
-		{
-			
-			
-			
-			
-			
-		}			
-		return new int[]{-1};
+		return usersAndAccessableFloors.get(userID);	
 	}
 	
 	
