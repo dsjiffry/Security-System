@@ -14,6 +14,11 @@ public class ReportingServiceImpl implements ReportingService
 	private HashMap<String, String> BuildingVisitHistory = new HashMap<>();
 
 	
+	/**
+	 * Will Log the user and the dateTime when they entered
+	 * @param userID ID of the user
+	 * @return If logging was successful then true
+	 */
 	@Override
 	public boolean LogUserID(String userID) 
 	{
@@ -35,6 +40,11 @@ public class ReportingServiceImpl implements ReportingService
 	}
 
 
+	/**
+	 * Removes a user from the log
+	 * @param userID ID of the user
+	 * @return If successfully removed then true
+	 */
 	@Override
 	public boolean RemoveUserID(String userID) {
 		if(!peopleInsideTheBuilding.containsKey(userID))

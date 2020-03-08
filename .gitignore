@@ -24,3 +24,8 @@ hs_err_pid*
 
 
 /felix-framework-4.0.3/felix-cache/*
+
+/Authentication Service/bin/.gitignore
+/Elevator Service/.gitignore
+/Front Door/.gitignore
+/Reporting/.gitignore
