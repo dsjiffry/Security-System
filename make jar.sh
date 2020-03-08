@@ -35,7 +35,7 @@ mv elevator.jar ../../../felix-framework-4.0.3/
 
 
 
-
 cd "../../../felix-framework-4.0.3"
+rm -r "felix-cache"
 
 java -jar bin/felix.jar
