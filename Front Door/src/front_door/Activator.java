@@ -21,6 +21,12 @@ public class Activator implements BundleActivator
 	// Create a service tracker to monitor Reporting services.
 	private ServiceTracker report_tracker = null;
 
+	
+	/**
+	 * Will take the User ID and ask the authentication service if it's valid.
+	 * If valid then the front door will be unlocked.
+	 */
+	@SuppressWarnings("unchecked")
 	public void start(BundleContext context) throws Exception
     {
         m_context = context;

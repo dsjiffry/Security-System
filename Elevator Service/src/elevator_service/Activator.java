@@ -21,6 +21,11 @@ public class Activator implements BundleActivator
 	// Create a service tracker to monitor Reporting services.
 	private ServiceTracker report_tracker = null;
 
+	
+	/**
+	 * Will take the user ID and ask the Authentication Service for the floors that the particular user is allowed to access.
+	 * Then it will unlock those floors only.
+	 */
 	@SuppressWarnings("unchecked")
 	public void start(BundleContext context) throws Exception
     {
