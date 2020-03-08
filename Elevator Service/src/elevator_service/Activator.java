@@ -1,15 +1,15 @@
-package front_door;
-
-import authentication_service.AuthenticationService;
-import reporting_service.ReportingService;
+package elevator_service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
+import authentication_service.AuthenticationService;
+import reporting_service.ReportingService;
 
 public class Activator implements BundleActivator
 {
@@ -21,6 +21,7 @@ public class Activator implements BundleActivator
 	// Create a service tracker to monitor Reporting services.
 	private ServiceTracker report_tracker = null;
 
+	@SuppressWarnings("unchecked")
 	public void start(BundleContext context) throws Exception
     {
         m_context = context;
@@ -34,7 +35,7 @@ public class Activator implements BundleActivator
 
         try
         {
-            System.out.println("Enter a User ID to Authenticate.");
+            System.out.println("Enter a User ID to Access Floors.");
             String userID = "";
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
@@ -45,35 +46,35 @@ public class Activator implements BundleActivator
                 userID = in.readLine();
 
                 AuthenticationService authenticate = (AuthenticationService) m_context.getService(auth_tracker.getServiceReference());
-
+                
                 // If the user entered a blank line, then
                 // exit the loop.
                 if (userID.length() == 0)
                 {
                     break;
                 }
-                else if (authenticate == null)
+                else if (authenticate != null)
                 {
-                    System.out.println("Authentication Service not found.");
-                }
-                // Otherwise print whether the word is correct or not.
-                else if (authenticate.checkUserID(userID))
-                {
-                    System.out.println("ID Recognized, Opening door.");
-                    report_tracker.open();
-                    ReportingService report = (ReportingService) m_context.getService(report_tracker.getServiceReference());
-                    
-                    //If this returns false we have a Security Issue
-                    if(!report.LogUserID(userID))
-                    {
-                    	//TODO: Send Security Alert
-                    }
-                    
-                    
+                	List<Integer> authorizedFloors = authenticate.getAccessableFloors(userID);
+                	
+                	if(authorizedFloors == null)
+                	{
+                		//Means there is no such ID in the valid ID list.
+                		System.out.println("Unrecognized ID");
+                	}
+                	else
+                	{
+	                	System.out.print("Unlocking floors:");
+	                	for(int floor : authorizedFloors)
+	                	{
+	                		System.out.print(" "+floor+",");
+	                	}
+	                	System.out.println(" for user: "+userID);
+                	}
                 }
                 else
                 {
-                    System.out.println("Unrecognized ID.");
+                	System.out.println("Authentication Service not found.");
                 }
             }
         } catch (Exception ex) { }
