@@ -65,15 +65,18 @@ public class Activator implements BundleActivator
                 // Otherwise print whether the word is correct or not.
                 else if (authenticate.checkUserID(userID))
                 {
-                    System.out.println("ID Recognized, Opening door.");
+              
                     report_tracker.open();
                     ReportingService report = (ReportingService) m_context.getService(report_tracker.getServiceReference());
                     
                     //If this returns false we have a Security Issue
                     if(!report.logUserID(userID))
                     {
-                    	//TODO: Send Security Alert
+                    	authenticate.securityAlert("User is attempting to re-entering Building without leaving.");
+                    	continue;
                     }
+                    System.out.println("ID Recognized, Opening door.");
+                    
                     
                     
                 }

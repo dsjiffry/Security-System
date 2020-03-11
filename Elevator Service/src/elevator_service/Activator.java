@@ -36,6 +36,7 @@ public class Activator implements BundleActivator
         report_tracker = new ServiceTracker<>(m_context,ReportingService.class.getName(),null);
         
         auth_tracker.open();
+        report_tracker.open();
         
 
         try
@@ -51,6 +52,7 @@ public class Activator implements BundleActivator
                 userID = in.readLine();
 
                 AuthenticationService authenticate = (AuthenticationService) m_context.getService(auth_tracker.getServiceReference());
+                ReportingService report = (ReportingService) m_context.getService(report_tracker.getServiceReference());
                 
                 // If the user entered a blank line, then
                 // exit the loop.
@@ -59,7 +61,7 @@ public class Activator implements BundleActivator
                     break;
                 }
                 else if (authenticate != null)
-                {
+                {                	
                 	List<Integer> authorizedFloors = authenticate.getAccessableFloors(userID);
                 	
                 	if(authorizedFloors == null)
@@ -69,6 +71,14 @@ public class Activator implements BundleActivator
                 	}
                 	else
                 	{
+                    	if(!report.isInsideBuilding(userID))
+                    	{
+                    		//This User did not enter through the front door.
+                    		authenticate.securityAlert("User Not logged by front door.");
+                    		continue;
+                    	}
+                		
+                		
 	                	System.out.print("Unlocking floors:");
 	                	for(int floor : authorizedFloors)
 	                	{
@@ -76,8 +86,7 @@ public class Activator implements BundleActivator
 	                	}
 	                	System.out.println(" for user: "+userID);
 	                	
-	                	report_tracker.open();
-	                    ReportingService report = (ReportingService) m_context.getService(report_tracker.getServiceReference());
+
 	                    report.logElevatorAccess(userID);
                 	}
                 }
