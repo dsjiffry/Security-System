@@ -6,6 +6,12 @@ import java.util.List;
 
 public class AuthenticationServiceImpl implements AuthenticationService
 {
+	
+	public final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_RESET = "\u001B[0m";
+	
+	
+	
 	@SuppressWarnings("serial")
 	HashMap<String, List<Integer>> usersAndAccessableFloors = new HashMap< String, List<Integer> >()
 	{{
@@ -41,6 +47,16 @@ public class AuthenticationServiceImpl implements AuthenticationService
 	public List<Integer> getAccessableFloors(String userID) 
 	{
 		return usersAndAccessableFloors.get(userID);	
+	}
+	
+	
+	/**
+	 * Output Alert messages if security violations are detected
+	 * @param msg the message to output
+	 */
+	public void securityAlert(String msg)
+	{
+		System.out.println(ANSI_RED + msg + ANSI_RESET);
 	}
 	
 	

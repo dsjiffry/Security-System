@@ -7,5 +7,6 @@ public interface AuthenticationService
 	
 	public boolean checkUserID(String userID);
 	public List<Integer> getAccessableFloors(String userID);
+	public void securityAlert(String msg);
 
 }

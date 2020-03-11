@@ -89,5 +89,35 @@ public class ReportingServiceImpl implements ReportingService
 	}
 	
 	
+	/**
+	 * Check if someone has entered the Building through the front door
+	 * @param userID the userID to check
+	 * @return true if they came through the front door
+	 */
+	@Override
+	public boolean isInsideBuilding(String userID)
+	{
+		if(peopleInsideTheBuilding.containsKey(userID))
+		{
+			return true;
+		}
+		return false;		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
