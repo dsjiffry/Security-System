@@ -72,7 +72,7 @@ public class Activator implements BundleActivator
                     //If this returns false we have a Security Issue
                     if(!report.logUserID(userID))
                     {
-                    	authenticate.securityAlert("User is attempting to re-entering Building without leaving.");
+                    	authenticate.securityAlert("User is attempting to re-enter the building without leaving.");
                     	continue;
                     }
                     System.out.println("ID Recognized, Opening door.");
