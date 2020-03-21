@@ -6,8 +6,9 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: front_door.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: Front_Door
-Import-Package: org.osgi.framework,
+Import-Package: authentication_service,
+ org.osgi.framework,
+ org.osgi.service.packageadmin;version="1.2.0",
  org.osgi.util.tracker,
- authentication_service,
  reporting_service
 Bundle-ActivationPolicy: lazy
