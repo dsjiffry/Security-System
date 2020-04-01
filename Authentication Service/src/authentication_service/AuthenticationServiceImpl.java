@@ -15,11 +15,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     AuthObject authObject;
 
     public final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_RESET = "\u001B[0m";
+	public final String ANSI_RESET = "\u001B[0m";
 
-   
-    public void setAuthObject(AuthObject authObject) {
-        this.authObject = authObject;
+   @Override
+    public boolean setAuthObject(AuthObject authObject) {
+	    if(authenticate(authObject))
+	    {
+	    	this.authObject = authObject;
+	    	return true;
+	    }
+	    return false;
     }
     
 

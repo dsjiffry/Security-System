@@ -9,7 +9,7 @@ mv frontDoor.jar ../../../felix-framework-4.0.3/
 
 cd "../../../Authentication Service/bin/authentication_service"
 
-jar cfm auth.jar ../../META-INF/MANIFEST.MF ../authentication_service/
+jar cfm auth.jar ../../META-INF/MANIFEST.MF ../authentication_service/ ../auth_util/
 
 mv auth.jar ../../../felix-framework-4.0.3/bundle/
 

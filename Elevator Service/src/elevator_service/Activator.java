@@ -8,6 +8,8 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
+import auth_util.AuthObject;
+import auth_util.IdAuthentication;
 import authentication_service.AuthenticationService;
 import reporting_service.ReportingService;
 
@@ -31,7 +33,7 @@ public class Activator implements BundleActivator
     {
         m_context = context;
 
-        // Create a service tracker objects
+        // Create service tracker objects
         auth_tracker = new ServiceTracker<>(m_context,AuthenticationService.class.getName(),null);
         report_tracker = new ServiceTracker<>(m_context,ReportingService.class.getName(),null);
         
@@ -62,7 +64,9 @@ public class Activator implements BundleActivator
                 }
                 else if (authenticate != null)
                 {                	
-                	List<Integer> authorizedFloors = authenticate.getAccessableFloors(userID);
+                    AuthObject authObject = new IdAuthentication(userID);
+                    authenticate.setAuthObject(authObject);
+                	List<Integer> authorizedFloors = authenticate.getAccessableFloors();
                 	
                 	if(authorizedFloors == null)
                 	{
@@ -95,10 +99,11 @@ public class Activator implements BundleActivator
                 	System.out.println("Authentication Service not found.");
                 }
             }
-        } catch (Exception ex) { }
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     public void stop(BundleContext context)
     {
+    	System.out.println("Elevator Service has stopped");
     }
 }

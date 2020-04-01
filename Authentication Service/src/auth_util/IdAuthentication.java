@@ -1,9 +1,8 @@
 package auth_util;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * IdAuthentication
@@ -15,6 +14,7 @@ public class IdAuthentication implements AuthObject{
     private String userId;
 
     private List<User> users;
+    
 
     public IdAuthentication(String userID)
     {
@@ -39,7 +39,7 @@ public class IdAuthentication implements AuthObject{
         
         for(int i = 0 ; i < this.users.size() ; i++ )
         {
-            if(users.get(i).getUserId() == this.userId)
+            if(users.get(i).getUserId().equals(this.userId))
             {
                 this.user = users.get(i);
                 return true;

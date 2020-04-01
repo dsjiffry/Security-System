@@ -9,5 +9,6 @@ Automatic-Module-Name: Elevator_Service
 Import-Package: org.osgi.framework,
  org.osgi.util.tracker,
  authentication_service,
+ auth_util,
  reporting_service
 Bundle-ActivationPolicy: lazy
