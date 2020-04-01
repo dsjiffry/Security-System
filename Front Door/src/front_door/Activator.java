@@ -4,10 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import javax.security.sasl.AuthorizeCallback;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
+import auth_util.AuthObject;
+import auth_util.IdAuthentication;
 import authentication_service.AuthenticationService;
 import reporting_service.ReportingService;
 
@@ -81,6 +85,7 @@ public class Activator implements BundleActivator
         String userID = in.readLine();
 
         AuthenticationService authenticate = (AuthenticationService) m_context.getService(auth_tracker.getServiceReference());
+        AuthObject authObject = new IdAuthentication(userID);
 
         // If the user entered a blank line, then exit
         if (userID.length() == 0)
@@ -91,8 +96,8 @@ public class Activator implements BundleActivator
         {
             System.out.println("Authentication Service not found.");
         }
-        // Otherwise print whether the word is correct or not.
-        else if (authenticate.checkUserID(userID))
+        // Otherwise print whether the ID is correct or not.
+        else if (authObject.authenticate())
         {
       
             report_tracker.open();
@@ -129,6 +134,7 @@ public class Activator implements BundleActivator
         String userID = in.readLine();
 
         AuthenticationService authenticate = (AuthenticationService) m_context.getService(auth_tracker.getServiceReference());
+        AuthObject authObject = new IdAuthentication(userID);
 
         // If the user entered a blank line, then exit
         if (userID.length() == 0)
@@ -140,7 +146,7 @@ public class Activator implements BundleActivator
             System.out.println("Authentication Service not found.");
         }
         // Otherwise print whether the word is correct or not.
-        else if (authenticate.checkUserID(userID))
+        else if (authObject.authenticate())
         {
       
             report_tracker.open();
@@ -169,5 +175,6 @@ public class Activator implements BundleActivator
 
     public void stop(BundleContext context)
     {
+    	System.out.println("Front Door service stopped");
     }
 }

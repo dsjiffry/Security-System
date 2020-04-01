@@ -19,7 +19,7 @@ public class Activator implements BundleActivator
 	@Override
 	public void stop(BundleContext context)
 	{
-		//Service is automatically unregistered
+		System.out.println("Authentication Service stopped");
 	}
 
 
