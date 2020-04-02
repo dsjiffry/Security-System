@@ -7,7 +7,9 @@ An Access Control System which uses the Apache Felix Framework
 * Open the project via Eclipse (This is needed to generate the class files)
 * Run the "make jar" script to auto-build the jars.
 * "make jar" will automatically start up felix. Once in felix install the jars and run them as shown below
-![Instructions](https://github.com/dsjiffry/Security-System/raw/master/instructions.PNG)
+![Front Door](https://github.com/dsjiffry/Security-System/raw/master/Front%20Door%20Service.PNG)
+![BarCode Reader](https://github.com/dsjiffry/Security-System/raw/master/Barcode%20Reader%20Service.PNG)
+![Elevator](https://github.com/dsjiffry/Security-System/raw/master/Elevator%20Service.PNG)
 
 # Work Distribution
 #### 1. IT18050318	M. A. Zeid	->	Authentication Service
