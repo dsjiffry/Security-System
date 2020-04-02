@@ -15,6 +15,9 @@ public class ReportingServiceImpl implements ReportingService
 	
 	//Keeping a log of people who accessed the Elevator
 	private HashMap<String, String> elevatorAccessHistory = new HashMap<>();
+	
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public final String ANSI_RESET = "\u001B[0m";
 
 	
 	/**
@@ -38,7 +41,7 @@ public class ReportingServiceImpl implements ReportingService
 		
 		//Storing the userID and the current DateTime
 		peopleInsideTheBuilding.put(userID, currentDateTime);
-		System.out.println("User: "+userID+" Entered Building at: "+currentDateTime);
+		printMsg("User: "+userID+" Entered Building at: "+currentDateTime);
 		return true;
 	}
 
@@ -65,7 +68,7 @@ public class ReportingServiceImpl implements ReportingService
 		
 		//Using dateTime as key since we need to keep a track of all the times a user leaves the building.
 		buildingVisitHistory.put(currentDateTime, userID);
-		System.out.println("User: "+userID+" Left the Building at: "+currentDateTime);
+		printMsg("User: "+userID+" Left the Building at: "+currentDateTime);
 		return true;
 	}
 	
@@ -85,7 +88,7 @@ public class ReportingServiceImpl implements ReportingService
 		
 		//Storing the userID and the current DateTime
 		elevatorAccessHistory.put(userID, currentDateTime);
-		System.out.println("User: "+userID+" Accessed Elevator at: "+currentDateTime);
+		printMsg("User: "+userID+" Accessed Elevator at: "+currentDateTime);
 	}
 	
 	
@@ -104,6 +107,14 @@ public class ReportingServiceImpl implements ReportingService
 		return false;		
 	}
 	
+	/**
+	 * Printing messages in yellow so that they can be identified
+	 * @param msg message to print
+	 */
+	private void printMsg(String msg)
+	{
+		System.out.println(ANSI_YELLOW+msg+ANSI_RESET);
+	}
 	
 	
 	

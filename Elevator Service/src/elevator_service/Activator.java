@@ -43,13 +43,13 @@ public class Activator implements BundleActivator
 
         try
         {
-            System.out.println("Enter a User ID to Access Floors.");
             String userID = "";
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
             while (true)
             {
-                // Ask the user to enter a word.
+                // Ask the user to enter a ID.
+            	System.out.println("\nEnter a User ID to Access Floors.");
                 System.out.print("Enter ID: ");
                 userID = in.readLine();
 
