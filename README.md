@@ -9,12 +9,13 @@ An Access Control System which uses the Apache Felix Framework
 * "make jar" will automatically start up felix. Once in felix install the jars and run them as shown below
 ![Instructions](https://github.com/dsjiffry/Security-System/raw/master/instructions.PNG)
 
-#Work Distribution
-	## 1. IT18050318	M. A. Zeid			Authentication Service
-	## 2. IT18060690	M. R. M. Rifan		Elevator Service
-	## 3. IT18200034	M. A. F. Hasna		Reporting Service
-	## 4. IT17029896	D. S. Jiffry		Front Door service
+# Work Distribution
+#### 1. IT18050318	M. A. Zeid	->	Authentication Service
+#### 2. IT18060690	M. R. M. Rifan	->	Elevator Service
+#### 3. IT18200034	M. A. F. Hasna	->	Reporting Service
+#### 4. IT17029896	D. S. Jiffry	->	Front Door service
 
+#### 5. Common Effort -> Barcode Service
 
 
 
