@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Barcode_Reader
+Bundle-SymbolicName: Barcode_Reader
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: barcode_reader.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: Barcode_Reader
+Import-Package: authentication_service,
+ auth_util,
+ org.osgi.framework,
+ org.osgi.service.packageadmin;version="1.2.0",
+ org.osgi.util.tracker,
+ reporting_service
+Bundle-ActivationPolicy: lazy

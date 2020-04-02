@@ -6,6 +6,12 @@ jar cfm frontDoor.jar ../../META-INF/MANIFEST.MF ../front_door/
 mv frontDoor.jar ../../../felix-framework-4.0.3/
 
 
+cd "../../../Barcode Reader/bin/barcode_reader"
+
+jar cfm barcodeReader.jar ../../META-INF/MANIFEST.MF ../barcode_reader/
+
+mv barcodeReader.jar ../../../felix-framework-4.0.3/
+
 
 cd "../../../Authentication Service/bin/authentication_service"
 
