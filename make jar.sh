@@ -37,6 +37,11 @@ mv elevator.jar ../../../felix-framework-4.0.3/
 
 
 
+cd "../../../Doors And Lights/bin/doors_and_lights"
+
+jar cfm doors.jar ../../META-INF/MANIFEST.MF ../doors_and_lights/
+
+mv doors.jar ../../../felix-framework-4.0.3/
 
 
 
