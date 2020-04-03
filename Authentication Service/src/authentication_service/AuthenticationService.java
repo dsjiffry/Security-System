@@ -9,6 +9,7 @@ public interface AuthenticationService
 	
 	public boolean authenticate(AuthObject authObject);
 	public List<Integer> getAccessableFloors();
+	public List<String> getAccessableDoors();
 	public void securityAlert(String msg);
 	public boolean setAuthObject(AuthObject authObject);
 }

@@ -39,6 +39,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         
         return this.authObject.getUser().getAccessableFloors();
     }
+    
+    @Override
+    public List<String> getAccessableDoors() {
+        
+        return this.authObject.getUser().getAccessableDoors();
+    }
 
     @Override
     public void securityAlert(String msg) {

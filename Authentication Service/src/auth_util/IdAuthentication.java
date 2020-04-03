@@ -19,9 +19,9 @@ public class IdAuthentication implements AuthObject{
     public IdAuthentication(String userID)
     {
         //Create Dummy users
-        User usr1 = new User("USR001", Arrays.asList(1, 2, 3));
-        User usr2 = new User("USR002", Arrays.asList(1, 2, 3, 4, 5));
-        User usr3 = new User("USR003", Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
+    	User usr1 = new User("USR001", Arrays.asList(1, 2, 3), Arrays.asList("A7", "B2", "C8"));
+        User usr2 = new User("USR002", Arrays.asList(1, 2, 3, 4, 5), Arrays.asList("A4", "B20", "C18", "D9", "E13"));
+        User usr3 = new User("USR003", Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8), Arrays.asList("A17", "B12", "C13", "D1", "E2", "F1", "G3", "H10"));
 
         users = new ArrayList<User>();
         users.add(usr1);

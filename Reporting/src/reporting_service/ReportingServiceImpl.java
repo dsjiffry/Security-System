@@ -16,6 +16,9 @@ public class ReportingServiceImpl implements ReportingService
 	//Keeping a log of people who accessed the Elevator
 	private HashMap<String, String> elevatorAccessHistory = new HashMap<>();
 	
+	//Keeping a log of people who accessed each Doors
+	private HashMap<String, String> doorAccessHistory = new HashMap<>();
+	
 	public static final String ANSI_YELLOW = "\u001B[33m";
 	public final String ANSI_RESET = "\u001B[0m";
 
@@ -89,6 +92,24 @@ public class ReportingServiceImpl implements ReportingService
 		//Storing the userID and the current DateTime
 		elevatorAccessHistory.put(userID, currentDateTime);
 		printMsg("User: "+userID+" Accessed Elevator at: "+currentDateTime);
+	}
+	
+	/**
+	 * Will Log the user and the dateTime when called
+	 * @param userID ID of the user
+	 * @return If logging was successful then true
+	 */
+	@Override
+	public void logDoorsAccess(String userID, String room) 
+	{	
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();
+		String currentDateTime = dtf.format(now);
+		
+		//Storing the userID and the current DateTime
+		doorAccessHistory.put(userID, currentDateTime);
+		printMsg("User: "+userID+" Accessed Door "+room+" at: "+currentDateTime);
 	}
 	
 	
