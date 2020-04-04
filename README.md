@@ -13,12 +13,12 @@ An Access Control System which uses the Apache Felix Framework
 ![Doors](https://github.com/dsjiffry/Security-System/raw/master/Doors%20And%20Lights%20Service.PNG)
 
 # Work Distribution
-#### 1. IT18050318	M. A. Zeid	->	Authentication Service
-#### 2. IT18060690	M. R. M. Rifan	->	Elevator Service
-#### 3. IT18200034	M. A. F. Hasna	->	Reporting Service
-#### 4. IT17029896	D. S. Jiffry	->	Front Door service
+#### 1. IT18050318:	M. A. Zeid	->	Authentication Service
+#### 2. IT18060690:	M. R. M. Rifan	->	Doors and Lights Service
+#### 3. IT18200034:	M. A. F. Hasna	->	Elevator Service
+#### 4. IT17029896:	D. S. Jiffry	->	Front Door service
 
-#### 5. Common Effort -> Barcode Service
+#### 5. Common Effort -> Barcode Service, Reporting Service
 
 
 
@@ -26,6 +26,7 @@ An Access Control System which uses the Apache Felix Framework
  ## 1. Authentication Service
   #### Exported Packages:
   * authentication_service
+  * auth_util
   #### Imported Packages:
   * org.osgi.framework
   * org.osgi.util.tracker
@@ -42,6 +43,7 @@ An Access Control System which uses the Apache Felix Framework
   * org.osgi.framework
   * org.osgi.util.tracker
   * authentication_service
+  * auth_util
   * reporting_service 
   
  ## 4. Elevator Service
@@ -49,4 +51,32 @@ An Access Control System which uses the Apache Felix Framework
   * org.osgi.framework
   * org.osgi.util.tracker
   * authentication_service
+  * auth_util
   * reporting_service 
+
+ ## 5. Barcode Reader Service
+  #### Imported Packages:
+  * org.osgi.framework
+  * org.osgi.util.tracker
+  * authentication_service
+  * auth_util
+  * reporting_service 
+  
+ ## 6. Doors and Lights Service
+  #### Imported Packages:
+  * org.osgi.framework
+  * org.osgi.util.tracker
+  * authentication_service
+  * auth_util
+  * reporting_service 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
