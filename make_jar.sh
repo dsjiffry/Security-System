@@ -1,3 +1,6 @@
+# Making the jars and moving them to the felix environment for easy discovery.
+
+echo "Building the jars"
 
 cd "Front Door/bin/front_door"
 
@@ -49,4 +52,20 @@ mv doors.jar ../../../felix-framework-4.0.3/
 cd "../../../felix-framework-4.0.3"
 rm -r "felix-cache"
 
+
+
+
+
+# Running the felix framework
+echo "Starting felix"
+
 java -jar bin/felix.jar
+
+
+
+
+
+
+
+
+

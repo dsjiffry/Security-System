@@ -1,12 +1,9 @@
 package barcode_reader;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.security.sasl.AuthorizeCallback;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -14,7 +11,6 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import auth_util.AuthObject;
 import auth_util.BarcodeAuhentication;
-import auth_util.IdAuthentication;
 import authentication_service.AuthenticationService;
 import reporting_service.ReportingService;
 
@@ -34,6 +30,7 @@ public class Activator implements BundleActivator
 	 * Will take the barcode and ask the authentication service if it's valid.
 	 * If valid then the front door will be unlocked.
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public void start(BundleContext context) throws Exception
     {
@@ -98,7 +95,8 @@ public class Activator implements BundleActivator
 	
 	
 
-    public void stop(BundleContext context)
+    @Override
+	public void stop(BundleContext context)
     {
     	System.out.println("Barcode service stopped");
     }
