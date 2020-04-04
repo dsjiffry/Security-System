@@ -10,6 +10,7 @@ An Access Control System which uses the Apache Felix Framework
 ![Front Door](https://github.com/dsjiffry/Security-System/raw/master/Front%20Door%20Service.PNG)
 ![BarCode Reader](https://github.com/dsjiffry/Security-System/raw/master/Barcode%20Reader%20Service.PNG)
 ![Elevator](https://github.com/dsjiffry/Security-System/raw/master/Elevator%20Service.PNG)
+![Doors](https://github.com/dsjiffry/Security-System/raw/master/Doors%20And%20Lights%20Service.PNG)
 
 # Work Distribution
 #### 1. IT18050318	M. A. Zeid	->	Authentication Service
